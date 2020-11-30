@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Tyler&#39;s Project Blog</title>
+    <link>http://tylerengle.xyz/posts/</link>
+    <description>Recent content in Posts on Tyler&#39;s Project Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Nov 2020 14:02:17 -0700</lastBuildDate><atom:link href="http://tylerengle.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting Up Website</title>
+      <link>http://tylerengle.xyz/posts/2020-11-26-setting-up-website/</link>
+      <pubDate>Thu, 26 Nov 2020 14:02:17 -0700</pubDate>
+      
+      <guid>http://tylerengle.xyz/posts/2020-11-26-setting-up-website/</guid>
+      <description>The tools used to design this website are Hugo and Nginx. I want a static site so Hugo is perfect for that. I chose Nginx because I want to lean more about it. I&amp;rsquo;m hosting this website on a VPS using Centos8. I&amp;rsquo;m designing the website using vscode on Arch Linux.
+There&amp;rsquo;s a few things I want to do here:
+ Set up the website so it can be accessed from the web Add SSL certificate Harden Nginx settings  Setting up the website The first thing is to create a new website with Hugo in the current directory on my own machine.</description>
+    </item>
+    
+    <item>
+      <title>New Website</title>
+      <link>http://tylerengle.xyz/posts/2020-11-25-new-website/</link>
+      <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://tylerengle.xyz/posts/2020-11-25-new-website/</guid>
+      <description>Welcome to a mostly tech blog. I created this to document my projects and ideas. I keep forgetting things and keep re-researching them. Hopefully this will help. I&amp;rsquo;m also hoping to improve my technical writing.
+I&amp;rsquo;ll get more stuff up here eventually, maybe mess with the theme. Probably could make an email with my own domain at some point. More projects to add.
+I&amp;rsquo;m currently working on setting up Pfsense at home, but waiting on some more ethernet to attach a Unifi Lite AP.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Setting Up Website - Tyler&#39;s Project Blog</title>
+  <meta name="description" content="Hugo and Nginx">
+  <meta name="author" content="Tyler Engle"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Tyler\u0027s Project Blog",
+    
+    "url": "http:\/\/tylerengle.xyz\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/tylerengle.xyz\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/tylerengle.xyz\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/tylerengle.xyz\/posts\/2020-11-26-setting-up-website\/",
+          "name": "Setting up website"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Tyler Engle"
+  },
+  "headline": "Setting Up Website",
+  "description" : "The tools used to design this website are Hugo and Nginx. I want a static site so Hugo is perfect for that. I chose Nginx because I want to lean more about it. I\u0026rsquo;m hosting this website on a VPS using Centos8. I\u0026rsquo;m designing the website using vscode on Arch Linux.\nThere\u0026rsquo;s a few things I want to do here:\n Set up the website so it can be accessed from the web Add SSL certificate Harden Nginx settings  Setting up the website The first thing is to create a new website with Hugo in the current directory on my own machine.",
+  "inLanguage" : "en",
+  "wordCount":  720 ,
+  "datePublished" : "2020-11-26T14:02:17",
+  "dateModified" : "2020-11-26T14:02:17",
+  "image" : "http:\/\/tylerengle.xyz\/",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "http:\/\/tylerengle.xyz\/posts\/2020-11-26-setting-up-website\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/tylerengle.xyz\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/tylerengle.xyz\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Setting Up Website" />
+<meta property="og:description" content="Hugo and Nginx">
+<meta property="og:url" content="http://tylerengle.xyz/posts/2020-11-26-setting-up-website/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Tyler&#39;s Project Blog" />
+
+  <meta name="twitter:title" content="Setting Up Website" />
+  <meta name="twitter:description" content="Hugo and Nginx">
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.78.2" />
+  <link rel="alternate" href="http://tylerengle.xyz/index.xml" type="application/rss+xml" title="Tyler&#39;s Project Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="http://tylerengle.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="http://tylerengle.xyz/css/syntax.css" /><link rel="stylesheet" href="http://tylerengle.xyz/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+// css
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://tylerengle.xyz/">Tyler&#39;s Project Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Posts" href="/posts/">Posts</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="Posts-heading">
+              
+                <h1>Setting Up Website</h1>
+              
+              
+                <hr class="small">
+              
+              
+                
+                  <h2 class="Posts-subheading">Hugo and Nginx</h2>
+                
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>The tools used to design this website are Hugo and Nginx. I want a static site so Hugo is perfect for that. I chose Nginx because I want to lean more about it. I&rsquo;m hosting this website on a VPS using Centos8. I&rsquo;m designing the website using vscode on Arch Linux.</p>
+<p>There&rsquo;s a few things I want to do here:</p>
+<ol>
+<li>Set up the website so it can be accessed from the web</li>
+<li>Add SSL certificate</li>
+<li>Harden Nginx settings</li>
+</ol>
+<h3 id="setting-up-the-website">Setting up the website</h3>
+<p>The first thing is to create a new website with Hugo in the current directory on my own machine.</p>
+<pre><code>hugo new website tylerengle_blog
+</code></pre><p>This creates the necessary files and folder structure for Hugo in the folder tylerengle_blog.</p>
+<p><img src="hugo_struct.png#floatleft" alt="Hugo Project Directory Structure"></p>
+<p>Then a theme needs to be selected. This site uses beautifulhugo:</p>
+<pre><code>cd themes
+git submodule add https://github.com/halogenica/beautifulhugo.git beautifulhugo
+</code></pre><p>The theme is set in the config.toml file:</p>
+<pre><code>theme = &quot;beautifulhugo&quot;
+</code></pre><p>Now the site should be set to start adding pages.</p>
+<h3 id="adding-pages">Adding Pages</h3>
+<p>Pages are stored in the content folder. I use have page and Posts subdirectories. I also use a leaf structure to hold my pages, which means each page has its own directory to store its content. The &lsquo;page&rsquo; directory contains non-post pages like the about page. Posts contains all the blog posts like this one.</p>
+<p>To add a post using this scheme, create a directory for the page, then an &lsquo;index.md&rsquo; file within that folder:</p>
+<pre><code>mkdir content/Posts/&lt;name of page&gt;
+hugo new Posts/&lt;name of page&gt;/index.md
+</code></pre><p>Hugo adds a title, creation date, and sets this page as a draft.</p>
+<p>To add a non-post page:</p>
+<pre><code>hugo new page/&lt;name of page&gt;
+</code></pre><p>From here I&rsquo;ve created a few pages and posts and want to publish to the web.</p>
+<p>To publish your pages:</p>
+<pre><code>hugo -D
+</code></pre><p>Output will be in the &lsquo;public&rsquo; directory</p>
+<h2 id="nginx">Nginx</h2>
+<h3 id="installing-and-testing-nginx">Installing and Testing Nginx</h3>
+<p>First we need to Install Nginx:</p>
+<pre><code>yum install nginx
+</code></pre><p>Once installed, enable and start it in systemd:</p>
+<pre><code>systemd enable nginx
+systemd start nginx
+</code></pre><p>Now test that it works by going to http://&lt;server&rsquo;s IP address&gt; in a web browser. The default nginx page should appear:
+<img src="nginx_default.png" alt="Nginx default page"></p>
+<p>Now disable nginx while setting it up:</p>
+<pre><code>systemctl disable nginx
+</code></pre><h3 id="setting-up-nginx">Setting up Nginx</h3>
+<p>Since I&rsquo;m using an RHEL-based system, Nginx webserver configs are stored in /etc/nginx/conf.d.</p>
+<p>Create a quick config called &lsquo;tylerengle.xyz.conf&rsquo; in this folder.</p>
+<pre><code>server {
+    listen 80 default_server; # Listen on the host IPv4 address on port 80 for requests
+
+    listen [::]:80 default_server; # Listen on the host IPv6 address on port 80 for requests.
+
+    root /usr/share/nginx/tylerengle.xyz; # The folder with the websited contents
+    index index.html; # The top html file in the website
+
+    server_name tylerengle.xyz www.tylerengle.xyz; # Server only requests asking for these addresses
+
+    location / {
+        try_files $uri $uri/ =404; # Checks existence of files and sends a 404 message if files not found
+    }
+}
+</code></pre><p>The default nginx.conf file will include this.</p>
+<p>The default nginx.conf has a &lsquo;server&rsquo; section for the default Nginx page. Remove this or comment it out.</p>
+<h4 id="set-permissions-for-nginx">Set permissions for nginx</h4>
+<p>This assumes the website content is in /usr/share/nginx/tylerengle.xyz/. Create the directory if it isn&rsquo;t there.</p>
+<p>The permissions will need to be set for the nginx worker process user. Figure out which user this is. For me it was &lsquo;nginx&rsquo;</p>
+<pre><code>ps -ef | grep nginx
+</code></pre><p><img src="nginx_user.png" alt="Nginx User"></p>
+<p>The first column shows the user. We want the worker process so the second row user is the one we want.</p>
+<p>Set the owner and group of the tylerengle.xyz folder and contents to nginx using:</p>
+<pre><code>chown -R nginx:nginx usr/share/nginx/tylerengle.xyz
+</code></pre><p>Then go ahead and set 755 for the folders and 644 for the files in tylerengle.xyz. Use find to differentiate between folders and files and apply seperate operations to either.</p>
+<pre><code>find /usr/share/nginx/tylerengle.xyz/ -type f -exec chmod 644 {} + -o -type d -exec chmod 755 {} +
+</code></pre><p>This makes sure only the owner, nginx, can write or execute the files, while others can only read. Having an execute bit on the folders allows users to switch to that directory.</p>
+<h3 id="test-website">Test Website</h3>
+<p>This assumes your web domain&rsquo;s A records already points to your server&rsquo;s ip address.</p>
+<p>First, start nginx:</p>
+<pre><code>systemctl start nginx
+</code></pre><p>Then go to <a href="http://tylerengle.xyz">http://tylerengle.xyz</a>. https:// will not work since the config doesn&rsquo;t have tls or ssl enabled.</p>
+<p>That should be it. The website should be up and ready to go.</p>
+<p>The next post will go into adding an ssl certificate using certbot.</p>
+
+
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://tylerengle.xyz/posts/2020-11-25-new-website/" data-toggle="tooltip" data-placement="top" title="New Website">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Tyler Engle
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://tylerengle.xyz/">Tyler&#39;s Project Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.78.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="http://tylerengle.xyz/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://tylerengle.xyz/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

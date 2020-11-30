@@ -1,0 +1,35 @@
+baseURL = "http://tylerengle.xyz/"
+languageCode = "en-us"
+title = "Tyler's Project Blog"
+theme = "beautifulhugo"
+[Author]
+  name = "Tyler Engle"
+
+# Code Highlighting
+metaDataFormat = "yaml"
+pygmentsStyle = "trac"
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+
+# Custom CSS
+custom_css = ["css/extra.css"]
+
+[params]
+  homeTitle = "Tyler's Tasteful Tech Tales"
+  subtitle = "Posts about tech projects and more"
+  rss = true
+  showRelatedPosts = true
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    title = "About"
+    url = "page/about/"
+    weight = 0
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    title = "Posts"
+    url = "/posts/"
+    weight = 1
